@@ -21,6 +21,12 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Button Content="&lt;-" 
+                Margin="62,33,72,33"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Click="GoBack"
+                />
         <Label Content="Sign In"
                FontSize="35"
                Foreground="#fff"
@@ -115,14 +121,14 @@
                Grid.Column="1"
                Grid.Row="6"
                VerticalContentAlignment="Center"
-               HorizontalContentAlignment="Center" Margin="0,0,199,0"/>
+               HorizontalContentAlignment="Center" Margin="0,0,199,25"/>
         <Button Content="Sign in"
                 Grid.Column="1"
-                Grid.Row="7" 
+                Grid.Row="6" 
                 HorizontalAlignment="Left"
                 Width="100"
                 Height="Auto" 
-                Margin="151,0,0,25"
+                Margin="151,25,0,0"
                 Click="RegisterUser"/>
     </Grid>
 </Window>

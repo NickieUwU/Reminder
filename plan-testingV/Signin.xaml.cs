@@ -12,9 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
 using System.IO;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace plan_testingV
 {
@@ -29,7 +29,7 @@ namespace plan_testingV
         }
 
 
-        private void RegisterUser(object sender, RoutedEventArgs e)
+        public void RegisterUser(object sender, RoutedEventArgs e)
         {
             string Username = username.Text;
             string Confirm_Username = confirm_name.Text;
@@ -63,6 +63,10 @@ namespace plan_testingV
                     SQL_command.Parameters.AddWithValue("@Username", Username);
                     SQL_command.Parameters.AddWithValue("@Password", Password);
                     SQL_command.ExecuteNonQuery();
+                    
+                    Home home = new Home();
+                    home.Show();
+                    this.Close();
                 }
                 catch (Exception exception)
                 {
@@ -74,6 +78,13 @@ namespace plan_testingV
                     SQL_con.Close();
                 }
             }
+        }
+
+        private void GoBack(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
