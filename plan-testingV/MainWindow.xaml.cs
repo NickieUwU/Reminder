@@ -32,5 +32,12 @@ namespace plan_testingV
             signin.Show();
             this.Close();
         }
+
+        private void open_login(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
+        }
     }
 }

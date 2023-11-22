@@ -5,8 +5,124 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:plan_testingV"
         mc:Ignorable="d"
-        Title="Signin" Height="450" Width="800">
+        Title="Signin" Height="450" Width="800" Background="#36393e">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label Content="Sign In"
+               FontSize="35"
+               Foreground="#fff"
+               Grid.Column="1"
+               Margin="20,10,-35,20"
+               HorizontalContentAlignment="Left"
+               Height="Auto"
+               Width="Auto"/>
+        <Label Content="Username"
+               Grid.Row="2"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalAlignment="Left" 
+               Margin="120,0,0,0" 
+               Width="70"/>
+        <Label Content="Confirm Username"
+               Grid.Column="0"
+               Grid.Row="3"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Right" 
+               Margin="0,0,10,0"/>
+        <Label Content="Password"
+               Grid.Column="0"
+               Grid.Row="4"
+               Foreground="White"
+               VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Right"
+               Margin="0,0,10,0"/>
+        <Label Content="Confirm Password"
+               Grid.Column="0"
+               Grid.Row="5"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Right" Margin="0,0,10,0"/>
+        <TextBox Name="username"
+                 MaxLength="10"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 HorizontalAlignment="Left"
+                 Width="400"
+                 Height="38"
+                 Margin="1"
+                 Padding="5"
+                 HorizontalContentAlignment="Left"
+                 BorderThickness="0"
+                 Background="Black"
+                 Foreground="White"/>
+        <TextBox HorizontalContentAlignment="Left"
+                 MaxLength="10"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 HorizontalAlignment="Left"
+                 Width="400"
+                 Height="38"
+                 Name="confirm_name"
+                 Margin="1"
+                 Padding="5"
+                 BorderThickness="0"
+                 Background="Black"
+                 Foreground="White"/>
+        <PasswordBox Name="pswd"
+                     MaxLength="50"
+                     Grid.Row="4"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Width="400"
+                     Height="38"
+                     Margin="1"
+                     Padding="5"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="0"
+                     Background="Black"
+                     Foreground="White"/>
+        <PasswordBox Grid.Row="5"
+                     MaxLength="50"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="38"
+                     Width="400"
+                     Name="confirm_pswd"
+                     Margin="1"
+                     Padding="5"
+                     HorizontalContentAlignment="Left"
+                     BorderThickness="0"
+                     Background="Black"
+                     Foreground="White"/>
+        <Label Name="Warning_Label"
+               Content=""
+               Foreground="Red"
+               Grid.Column="1"
+               Grid.Row="6"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center" Margin="0,0,199,0"/>
+        <Button Content="Sign in"
+                Grid.Column="1"
+                Grid.Row="7" 
+                HorizontalAlignment="Left"
+                Width="100"
+                Height="Auto" 
+                Margin="151,0,0,25"
+                Click="RegisterUser"/>
     </Grid>
 </Window>
