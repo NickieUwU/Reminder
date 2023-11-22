@@ -7,6 +7,38 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Planner test version"
+               Grid.Row="0"
+               Grid.Column="1"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               />
+        <Button Content="Sign in"
+                Name="btnSignin"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="30"
+                Width="50"
+                HorizontalAlignment="Left" 
+                Click="open_signin"
+                />
+        <Button Content="Log in"
+                Name="btnLogin"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="30"
+                Width="50"
+                HorizontalAlignment="Right"
+                />
     </Grid>
 </Window>
