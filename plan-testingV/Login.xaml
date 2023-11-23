@@ -7,6 +7,90 @@
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800" Background="#36393e">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Content="&lt;-" 
+                Margin="62,33,72,33"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Click="GoBack"
+                />
+        <Label Content="Log in"
+               Foreground="White"
+               Width="Auto"
+               Height="Auto"
+               Grid.Column="1"
+               FontSize="35"
+               HorizontalContentAlignment="Left"
+               Margin="20,10,10,10"/>
+        <Label Content="Username" 
+               Grid.Row="1"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Right" 
+               Margin="0,0,10,0"/>
+        <Label Content="Password"
+               Grid.Row="2"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Right" Margin="0,0,10,0"/>
+        <TextBox Name="txtUsername"
+                 MaxLength="10"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="400"
+                 Height="38"
+                 Margin="1"
+                 Padding="5"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 BorderThickness="0"
+                 Background="Black"
+                 Foreground="White"/>
+        <PasswordBox Name="pswdPassword"
+                     MaxLength="50"
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Width="400"
+                     Height="38"
+                     Margin="1"
+                     Padding="5"
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="0"
+                     Background="Black"
+                     Foreground="White"/>
+        <Label Name="Warning_Label"
+               Content=""
+               Foreground="Red"
+               Margin="20,0,245,75"
+               Grid.Row="3"
+               Grid.Column="1"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"/>
+        <Button Content="Login"
+                Grid.Row="3"
+                Grid.Column="1"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Height="40"
+                Width="120"
+                Margin="65,25,0,0"
+                Click="LoginUser"/>
     </Grid>
 </Window>
