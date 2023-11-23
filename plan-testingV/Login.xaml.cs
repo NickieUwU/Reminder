@@ -69,6 +69,7 @@ namespace plan_testingV
                     {
                         UserTempData userTempData = new UserTempData(Username);
                         Home home = new Home();
+                        home.menuUser.Header = userTempData.Username;
                         home.Show();
                         this.Close();
                     }

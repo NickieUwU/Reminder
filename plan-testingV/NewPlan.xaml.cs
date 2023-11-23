@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace plan_testingV
 {
     /// <summary>
-    /// Interakční logika pro Home.xaml
+    /// Interakční logika pro NewPlan.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class NewPlan : Window
     {
-        public Home()
+        public NewPlan()
         {
             InitializeComponent();
-        }
-
-        private void Logout(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
-
-        private void CreateNewPlan(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -21,12 +21,21 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0"
-              Grid.Column="3">
-            <MenuItem Header="user">
+              Grid.Column="3" 
+              Margin="32,36,32,30">
+            <MenuItem Header="user"
+                      Name="menuUser">
                 <MenuItem Header="Show profile"/>
                 <MenuItem Header="Settings"/>
-                <MenuItem Header="Log out" Click="Logout"/>
+                <MenuItem Header="Log out" 
+                          Click="Logout"/>
             </MenuItem>
         </Menu>
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Margin="50,36,32,30"
+                Content="Create new plan"
+                Name="btnCreateNewPlan"
+                Click="CreateNewPlan"/>
     </Grid>
 </Window>
