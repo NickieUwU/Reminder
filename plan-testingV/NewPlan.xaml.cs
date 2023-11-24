@@ -48,11 +48,11 @@ namespace plan_testingV
             {
                 warning_label.Content = "Please enter the plan's name";
             }
-            if(comboYear.SelectedIndex == 0 || comboMonth.SelectedIndex == 0 || comboDay.SelectedIndex == 0 || comboHour.SelectedIndex == 0 || comboMinute.SelectedIndex == 0)
+            if(year == 0 || month == 0 || day == 0 || hour == 0 || minute == 0)
             {
                 warning_label.Content = "Please enter the plan's date";
             }
-            if (!string.IsNullOrEmpty(plan_name) || !string.IsNullOrEmpty(plan_desc) || comboYear.SelectedIndex!=0||comboMonth.SelectedIndex!=0||comboDay.SelectedIndex!=0||comboHour.SelectedIndex!=0||comboMinute.SelectedIndex!=0)
+            if (!string.IsNullOrEmpty(plan_name) || !string.IsNullOrEmpty(plan_desc) || year!=0||month!=0||day!=0||hour!=0||minute!=0)
             {
                 DateTime plan_date = new DateTime(year, month, day, hour, minute, 0);
                 warning_label.Content = "";

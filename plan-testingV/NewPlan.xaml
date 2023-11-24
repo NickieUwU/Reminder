@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:plan_testingV"
         mc:Ignorable="d"
-        Title="NewPlan" Height="450" Width="800" Background="#36393e">
+        Title="NewPlan" Height="450" Width="800" ResizeMode="NoResize" Background="#36393e">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
