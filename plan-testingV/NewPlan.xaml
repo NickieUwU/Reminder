@@ -79,17 +79,6 @@
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
                />
-        <DatePicker Name="txtPlanDate"
-                    Grid.Column="1"
-                    Grid.Row="3"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Width="124"
-                    Height="38"
-                    Padding="5"
-                    Background="Transparent"
-                    Foreground="Black"
-                    Margin="1,0,0,0"/>
         <Label Name="warning_label"
                Grid.Row="4"
                Grid.Column="1"
@@ -105,5 +94,61 @@
                 Margin="75,50,360,0" 
                 Click="create_NewPlan"
                 />
+        <ComboBox Name="comboYear"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  SelectedIndex="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  Margin="25,18,499,27" 
+                  Loaded="add_years">
+            <ComboBoxItem Content="Year"/>
+        </ComboBox>
+        
+        <ComboBox Name="comboMonth"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  SelectedIndex="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  Margin="125,18,399,27" 
+                  Loaded="add_months">
+            <ComboBoxItem Content="Month"/>
+        </ComboBox>
+
+        <ComboBox Name="comboDay"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  SelectedIndex="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  Margin="224,18,300,27" 
+                  Loaded="add_days">
+            <ComboBoxItem Content="Day"/>
+        </ComboBox>
+
+        <ComboBox Name="comboHour"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  SelectedIndex="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  Margin="323,18,201,27" 
+                  Loaded="add_hours">
+            <ComboBoxItem Content="Hour"/>
+        </ComboBox>
+
+        <ComboBox Name="comboMinute"
+                  Grid.Column="1"
+                  Grid.Row="3"
+                  SelectedIndex="0"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  Margin="422,18,102,27" 
+                  Loaded="add_minutes">
+            <ComboBoxItem Content="Minute"/>
+        </ComboBox>
+
+
     </Grid>
 </Window>
