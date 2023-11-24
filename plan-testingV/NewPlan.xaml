@@ -7,6 +7,103 @@
         mc:Ignorable="d"
         Title="NewPlan" Height="450" Width="800" Background="#36393e">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Content="&lt;-" 
+        Margin="62,33,72,33"
+        HorizontalContentAlignment="Center"
+        VerticalContentAlignment="Center"
+        Click="GoBack"
+        />
+        <Label Content="Add new plan"
+       Foreground="White"
+       Width="Auto"
+       Height="Auto"
+       Grid.Column="1"
+       FontSize="35"
+       HorizontalContentAlignment="Left"
+       Margin="20,10,10,10"/>
+        <Label Content="Plan name"
+               Grid.Row="1"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"/>
+        <TextBox Name="txtPlanName"
+                 MaxLength="20"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="400"
+                 Height="38"
+                 Margin="1"
+                 Padding="5"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 BorderThickness="0"
+                 Background="Black"
+                 Foreground="White"/>
+        <Label Content="Description"
+               Grid.Row="2"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               />
+        <TextBox Name="txtPlanDesc"
+                 Grid.Column="1"
+                 MaxLength="40"
+                 Grid.Row="2"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="400"
+                 Height="38"
+                 Padding="5"
+                 Background="Black"
+                 Foreground="White" Margin="1,0,0,0"/>
+        <Label Content="Reminder date"
+               Grid.Row="3"
+               Grid.Column="0"
+               Foreground="White"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               />
+        <DatePicker Name="txtPlanDate"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Width="124"
+                    Height="38"
+                    Padding="5"
+                    Background="Transparent"
+                    Foreground="Black"
+                    Margin="1,0,0,0"/>
+        <Label Name="warning_label"
+               Grid.Row="4"
+               Grid.Column="1"
+               Foreground="Red"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center" 
+               Margin="25,0,310,35" 
+               />
+        <Button Name="btnSetPlan"
+                Content="Create new plan"
+                Grid.Column="1"
+                Grid.Row="4" 
+                Margin="75,50,360,0" 
+                Click="create_NewPlan"
+                />
     </Grid>
 </Window>

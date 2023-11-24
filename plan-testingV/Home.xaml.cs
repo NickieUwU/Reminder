@@ -33,7 +33,9 @@ namespace plan_testingV
 
         private void CreateNewPlan(object sender, RoutedEventArgs e)
         {
-            
+            NewPlan newPlan = new NewPlan();
+            newPlan.Show();
+            this.Close();
         }
     }
 }
