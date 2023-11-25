@@ -52,9 +52,10 @@ namespace plan_testingV
             {
                 warning_label.Content = "Please enter the plan's date";
             }
-            if (!string.IsNullOrEmpty(plan_name) || !string.IsNullOrEmpty(plan_desc) || year!=0||month!=0||day!=0||hour!=0||minute!=0)
+            if (!string.IsNullOrEmpty(plan_name) || year!=0||month!=0||day!=0||hour!=0||minute!=0)
             {
-                DateTime plan_date = new DateTime(year, month, day, hour, minute, 0);
+                DateTime _plan_date = new DateTime(year, month, day, hour, minute, 0);
+                string plan_date = _plan_date.ToString();
                 warning_label.Content = "";
                 string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
                 SqlConnection SQL_con = new SqlConnection(DBcon_string);
@@ -64,11 +65,14 @@ namespace plan_testingV
                     {
                         SQL_con.Open();
                     }
-                    string query = "INSERT INTO tbl_Plans VALUES(@Name, @Description, @Remind)";
+                    Login login = new Login();
+                    string query_getUserID = "SELECT User_ID FROM tbl_Users WHERE Username=@Username";
+                    SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
+                    string query = "INSERT INTO tblPlans VALUES(@Plan_name, @Plan_desc, @Plan_remindme)";
                     SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
-                    SQL_cmd.Parameters.AddWithValue("@Name", plan_name);
-                    SQL_cmd.Parameters.AddWithValue("@Description", plan_desc);
-                    SQL_cmd.Parameters.AddWithValue("@Remind", plan_date);
+                    SQL_cmd.Parameters.AddWithValue("@Plan_name", plan_name);
+                    SQL_cmd.Parameters.AddWithValue("@Plan_desc", plan_desc);
+                    SQL_cmd.Parameters.AddWithValue("@Plan_remindme", plan_date);
                     SQL_cmd.ExecuteNonQuery();
                     Home home = new Home();
                     home.Show();
