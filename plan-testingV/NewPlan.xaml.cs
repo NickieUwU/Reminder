@@ -161,12 +161,23 @@ namespace plan_testingV
                 {
                     SQL_con.Open();
                 }
+
                 Login login = new Login();
                 UserTempData userTempData = new UserTempData(login.txtUsername.Text);
-                string query_getUserID = "SELECT User_ID FROM tbl_Users WHERE Username=@Username";
+
+                string query_getUserID = "SELECT USER_ID FROM tbl_Users WHERE Username=@Username";
                 SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
                 SQL_cmd_getUserID.Parameters.AddWithValue("@Username", userTempData.Username);
-                User_ID = Convert.ToInt32(SQL_cmd_getUserID.ExecuteScalar());
+
+                using (SqlDataReader sqlDataReader = SQL_cmd_getUserID.ExecuteReader())
+                {
+                    if (sqlDataReader.Read())
+                    {
+                        User_ID = sqlDataReader.GetInt32(0); // Store the selected value in the variable
+                    }
+                }
+
+                // You can directly return the user_ID here
                 return User_ID;
             }
             catch (Exception ex)
