@@ -66,25 +66,16 @@ namespace plan_testingV
                     {
                         SQL_con.Open();
                     }
-                    int User_ID = 0;
+                    int User_ID = getUserID();
                     Login login = new Login();
                     UserTempData userTempData = new UserTempData(login.txtUsername.Text);
-                    string query_getUserID = "SELECT User_ID FROM tbl_Users WHERE Username=@Username";
-                    SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
-                    SQL_cmd_getUserID.Parameters.AddWithValue("@Username", userTempData.Username);
-                    SqlDataReader sqlDataReader = SQL_cmd_getUserID.ExecuteReader();
-                    while (sqlDataReader.Read())
-                    {
-                        User_ID = sqlDataReader.GetInt32(0);
-                    }
-                    string query = "INSERT INTO tblPlans VALUES(@User_ID, @Plan_name, @Plan_desc, @Plan_remindme)";
+                    string query = "INSERT INTO tblPlans (User_ID, Plan_name, Plan_desc, Plan_remindme) VALUES (@User_ID, @Plan_name, @Plan_desc, @Plan_remindme)";
                     SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
                     SQL_cmd.CommandType = CommandType.Text;
                     SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                     SQL_cmd.Parameters.AddWithValue("@Plan_name", plan_name);
                     SQL_cmd.Parameters.AddWithValue("@Plan_desc", plan_desc);
                     SQL_cmd.Parameters.AddWithValue("@Plan_remindme", plan_date);
-                    
                     SQL_cmd.ExecuteNonQuery();
                     Home home = new Home();
                     home.Show();
@@ -158,5 +149,36 @@ namespace plan_testingV
                 comboMinute.Items.Add(i+1);
             }
         }
+
+        public int getUserID()
+        {
+            int User_ID = 0;
+            string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
+            SqlConnection SQL_con = new SqlConnection(DBcon_string);
+            try
+            {
+                if (SQL_con.State == System.Data.ConnectionState.Closed)
+                {
+                    SQL_con.Open();
+                }
+                Login login = new Login();
+                UserTempData userTempData = new UserTempData(login.txtUsername.Text);
+                string query_getUserID = "SELECT User_ID FROM tbl_Users WHERE Username=@Username";
+                SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
+                SQL_cmd_getUserID.Parameters.AddWithValue("@Username", userTempData.Username);
+                User_ID = Convert.ToInt32(SQL_cmd_getUserID.ExecuteScalar());
+                return User_ID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+            finally
+            {
+                SQL_con.Close();
+            }
+        }
+
     }
 }
