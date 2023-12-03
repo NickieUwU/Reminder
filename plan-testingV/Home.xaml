@@ -24,7 +24,7 @@
               Grid.Column="3" 
               Margin="66,36,66,36"
               Background="Transparent">
-            <MenuItem Header="user"
+            <MenuItem Header=""
                       Name="menuUser"
                       Foreground="White">
                 <MenuItem Header="Show profile"/>
@@ -39,5 +39,11 @@
                 Content="Create new plan"
                 Name="btnCreateNewPlan"
                 Click="CreateNewPlan"/>
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                Margin="50,36,32,30"
+                Content="View your plans"
+                Name="btnViewPlans"
+                Click="ViewPlans"/>
     </Grid>
 </Window>

@@ -37,5 +37,12 @@ namespace plan_testingV
             newPlan.Show();
             this.Close();
         }
+
+        private void ViewPlans(object sender, RoutedEventArgs e)
+        {
+            Plans viewPlans = new Plans();
+            viewPlans.Show();
+            this.Close();
+        }
     }
 }

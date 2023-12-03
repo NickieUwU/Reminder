@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Security.Cryptography.X509Certificates;
 
 namespace plan_testingV
 {
@@ -31,7 +32,8 @@ namespace plan_testingV
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-        }   
+        }
+
         public void LoginUser(object sender, RoutedEventArgs e)
         {
             string Username = txtUsername.Text;
@@ -67,9 +69,9 @@ namespace plan_testingV
                     int count = Convert.ToInt32(SQL_command.ExecuteScalar());
                     if (count == 1)
                     {
-                        UserTempData userTempData = new UserTempData(Username);
                         Home home = new Home();
-                        home.menuUser.Header = userTempData.Username;
+                        home.menuUser.Header = Username;
+                        NewPlan newPlan = new NewPlan();
                         home.Show();
                         this.Close();
                     }
@@ -88,6 +90,7 @@ namespace plan_testingV
                     SQL_con.Close();
                 }
             }
+
         }
     }
 }

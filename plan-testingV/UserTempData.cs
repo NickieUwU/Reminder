@@ -8,8 +8,14 @@ namespace plan_testingV
 {
     public class UserTempData
     {
-        public string Username { get; set; }
-        
+        private string username;
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+
         public UserTempData(string Username)
         {
             this.Username = Username;
