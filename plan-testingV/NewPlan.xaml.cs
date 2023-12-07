@@ -155,7 +155,7 @@ namespace plan_testingV
         {
             Login login = new Login();
             int User_ID = 0;
-            string Username = login.txtUsername.Text;
+            string Username = "";
             string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
             SqlConnection SQL_con = new SqlConnection(DBcon_string);
             try
@@ -164,7 +164,6 @@ namespace plan_testingV
                 {
                     SQL_con.Open();
                 }
-
                 string query_getUserID = "SELECT USER_ID FROM tbl_Users WHERE Username=@Username";
                 SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
                 SQL_cmd_getUserID.Parameters.AddWithValue("@Username", Username);

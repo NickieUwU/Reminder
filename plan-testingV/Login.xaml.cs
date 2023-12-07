@@ -70,6 +70,7 @@ namespace plan_testingV
                     if (count == 1)
                     {
                         Home home = new Home();
+                        txtUsername.Copy();
                         home.menuUser.Header = Username;
                         NewPlan newPlan = new NewPlan();
                         home.Show();
