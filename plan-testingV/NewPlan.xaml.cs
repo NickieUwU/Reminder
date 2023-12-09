@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -155,7 +156,7 @@ namespace plan_testingV
         {
             Login login = new Login();
             int User_ID = 0;
-            string Username = "";
+            string Username = GetText();
             string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
             SqlConnection SQL_con = new SqlConnection(DBcon_string);
             try
@@ -192,7 +193,12 @@ namespace plan_testingV
             }
         }
 
-        
+        private string GetText()
+        {
+            Login login = new Login();
+            //return login.txtUsername.Paste();
+            return "as";
+        }
 
     }
 }

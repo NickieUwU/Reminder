@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:plan_testingV"
         mc:Ignorable="d"
-        Title="Plans" Height="450" Width="800">
+        Title="Plans" Height="450" Width="800" Background="#36393e" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Margin="0,111,0,0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Plan"
+                   Foreground="white"
+                   Grid.Column="1" 
+                   Grid.Row="0"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"/>
+            <Label Content="Plan description"
+                   Foreground="White"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"/>
+            <Label Content="Date to remind"
+                   Foreground="White"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"/>
+            <Label Name="lblPlanName"
+                   Content="name"
+                   Foreground="White"
+                   Grid.Column="2"
+                   Grid.Row="0"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Name="lblPlanDesc"
+                   Content="description"
+                   Foreground="White"
+                   Grid.Column="2"
+                   Grid.Row="1"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   />
+            <Label Name="lblPlanRemindDate"
+                   Content="remind date"
+                   Foreground="White"
+                   Grid.Column="2"
+                   Grid.Row="2"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   />
+        </Grid>
+        <Button Content="&lt;-" 
+        Margin="62,33,72,33"
+        HorizontalContentAlignment="Left"
+        VerticalContentAlignment="Center"
+        Click="GoBack"
+        />
+
+        <Button Name="btnLeft"
+                Content="&lt;"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="62,33,72,33"/>
+        <Button Name="btnRight"
+                Content="&gt;"
+                Grid.Column="2"
+                Grid.Row="1"
+                Margin="62,33,72,33"/>
     </Grid>
 </Window>
