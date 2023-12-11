@@ -177,7 +177,7 @@ namespace plan_testingV
                     }
                 }
 
-                MessageBox.Show(User_ID.ToString()+" <= user id succesfully obtained\n"+Username+" <= username succesfully obtained");
+                //MessageBox.Show(User_ID.ToString()+" <= user id succesfully obtained\n"+Username+" <= username succesfully obtained");
 
                 // You can directly return the user_ID here
                 return User_ID;

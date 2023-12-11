@@ -25,6 +25,13 @@ namespace plan_testingV
             InitializeComponent();
         }
 
+        private int count = 0;
+        private void DisplayData()
+        {
+            lblPlanName.Content = GetPlansName();
+            lblPlanDesc.Content = GetPlansDesc();
+            lblPlanRemindDate.Content = GetPlansDate();
+        }
         private void GoBack(object sender, RoutedEventArgs e)
         {
             Home home = new Home();
@@ -34,9 +41,7 @@ namespace plan_testingV
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            lblPlanName.Content = GetPlansName();
-            lblPlanDesc.Content = GetPlansDesc();
-            lblPlanRemindDate.Content = GetPlansDate();
+            DisplayData();
         }
 
         private int getUserID()
@@ -64,9 +69,7 @@ namespace plan_testingV
                     }
                 }
 
-                MessageBox.Show(User_ID.ToString() + " <= user id succesfully obtained\n" + Username + " <= username succesfully obtained");
-
-                // You can directly return the user_ID here
+                //MessageBox.Show(User_ID.ToString() + " <= user id succesfully obtained\n" + Username + " <= username succesfully obtained");
                 return User_ID;
             }
             catch (Exception ex)
@@ -79,7 +82,7 @@ namespace plan_testingV
                 SQL_con.Close();
             }
         }
-
+        
         private string GetPlansName()
         {
             string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
@@ -97,9 +100,9 @@ namespace plan_testingV
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.Read())
+                    if (sqlDataReader.HasRows && sqlDataReader.Read())
                     {
-                        Plan_name = sqlDataReader.GetString(0);
+                        Plan_name = sqlDataReader.GetString(count);
                     }
                 }
                 return Plan_name;
@@ -133,9 +136,9 @@ namespace plan_testingV
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.Read())
+                    if (sqlDataReader.HasRows && sqlDataReader.Read())
                     {
-                        Plan_desc = sqlDataReader.GetString(0);
+                        Plan_desc = sqlDataReader.GetString(count);
                     }
                 }
                 return Plan_desc;
@@ -169,9 +172,9 @@ namespace plan_testingV
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.Read())
+                    if (sqlDataReader.HasRows && sqlDataReader.Read())
                     {
-                        Plan_remindme = sqlDataReader.GetString(0);
+                        Plan_remindme = sqlDataReader.GetString(count);
                     }
                 }
                 return Plan_remindme;
@@ -195,6 +198,19 @@ namespace plan_testingV
             Login login = new Login();
             //return login.txtUsername.Paste();
             return "as";
+        }
+
+        private void GoAhead(object sender, RoutedEventArgs e)
+        {
+            count++;
+            DisplayData();
+        }
+
+        private void GoBackPlan(object sender, RoutedEventArgs e)
+        {
+            count--;
+            if (count < 0) count = 0;
+            DisplayData();
         }
     }
 }

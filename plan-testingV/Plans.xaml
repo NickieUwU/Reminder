@@ -88,11 +88,13 @@
                 Content="&lt;"
                 Grid.Column="1"
                 Grid.Row="1"
-                Margin="62,33,72,33"/>
+                Margin="62,33,72,33"
+                Click="GoBackPlan"/>
         <Button Name="btnRight"
                 Content="&gt;"
                 Grid.Column="2"
                 Grid.Row="1"
-                Margin="62,33,72,33"/>
+                Margin="62,33,72,33" 
+                Click="GoAhead"/>
     </Grid>
 </Window>
