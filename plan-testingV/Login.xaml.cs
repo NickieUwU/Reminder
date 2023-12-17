@@ -69,8 +69,9 @@ namespace plan_testingV
                     int count = Convert.ToInt32(SQL_command.ExecuteScalar());
                     if (count == 1)
                     {
+                        UserTempData.UserID = getUserID();
+                        UserTempData.Username = Username;
                         Home home = new Home();
-                        txtUsername.Copy();
                         home.menuUser.Header = Username;
                         NewPlan newPlan = new NewPlan();
                         home.Show();
@@ -92,6 +93,44 @@ namespace plan_testingV
                 }
             }
 
+        }
+
+        internal int getUserID()
+        {
+            Login login = new Login();
+            int User_ID = 0;
+            string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
+            SqlConnection SQL_con = new SqlConnection(DBcon_string);
+            try
+            {
+                if (SQL_con.State == System.Data.ConnectionState.Closed)
+                {
+                    SQL_con.Open();
+                }
+                string query_getUserID = "SELECT USER_ID FROM tbl_Users WHERE Username=@Username";
+                SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
+                SQL_cmd_getUserID.Parameters.AddWithValue("@Username", txtUsername.Text);
+
+                using (SqlDataReader sqlDataReader = SQL_cmd_getUserID.ExecuteReader())
+                {
+                    if (sqlDataReader.Read())
+                    {
+                        User_ID = sqlDataReader.GetInt32(0);
+                    }
+                }
+
+                //MessageBox.Show(User_ID.ToString() + " <= user id succesfully obtained\n" + Username + " <= username succesfully obtained");
+                return User_ID;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+            finally
+            {
+                SQL_con.Close();
+            }
         }
     }
 }

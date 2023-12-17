@@ -25,7 +25,8 @@ namespace plan_testingV
             InitializeComponent();
         }
 
-        private int count = 0;
+        private int count;
+        Login login = new Login();
         private void DisplayData()
         {
             lblPlanName.Content = GetPlansName();
@@ -35,6 +36,7 @@ namespace plan_testingV
         private void GoBack(object sender, RoutedEventArgs e)
         {
             Home home = new Home();
+            home.menuUser.Header = UserTempData.Username;
             home.Show();
             this.Close();
         }
@@ -44,44 +46,7 @@ namespace plan_testingV
             DisplayData();
         }
 
-        private int getUserID()
-        {
-            Login login = new Login();
-            int User_ID = 0;
-            string Username = GetText();
-            string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
-            SqlConnection SQL_con = new SqlConnection(DBcon_string);
-            try
-            {
-                if (SQL_con.State == System.Data.ConnectionState.Closed)
-                {
-                    SQL_con.Open();
-                }
-                string query_getUserID = "SELECT USER_ID FROM tbl_Users WHERE Username=@Username";
-                SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
-                SQL_cmd_getUserID.Parameters.AddWithValue("@Username", Username);
-
-                using (SqlDataReader sqlDataReader = SQL_cmd_getUserID.ExecuteReader())
-                {
-                    if (sqlDataReader.Read())
-                    {
-                        User_ID = sqlDataReader.GetInt32(0);
-                    }
-                }
-
-                //MessageBox.Show(User_ID.ToString() + " <= user id succesfully obtained\n" + Username + " <= username succesfully obtained");
-                return User_ID;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return 0;
-            }
-            finally
-            {
-                SQL_con.Close();
-            }
-        }
+        
         
         private string GetPlansName()
         {
@@ -93,7 +58,7 @@ namespace plan_testingV
                 {
                     SQL_con.Open();
                 }
-                int User_ID = getUserID();
+                int User_ID = UserTempData.UserID;
                 string Plan_name = "";
                 string query = "SELECT Plan_name FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
@@ -129,7 +94,7 @@ namespace plan_testingV
                 {
                     SQL_con.Open();
                 }
-                int User_ID = getUserID();
+                int User_ID = UserTempData.UserID;
                 string Plan_desc = "";
                 string query = "SELECT Plan_desc FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
@@ -165,7 +130,7 @@ namespace plan_testingV
                 {
                     SQL_con.Open();
                 }
-                int User_ID = getUserID();
+                int User_ID = UserTempData.UserID;
                 string Plan_remindme = "";
                 string query = "SELECT Plan_remindme FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
@@ -189,15 +154,6 @@ namespace plan_testingV
                 SQL_con.Close();
             }
 
-        }
-
-
-
-        private string GetText()
-        {
-            Login login = new Login();
-            //return login.txtUsername.Paste();
-            return "as";
         }
 
         private void GoAhead(object sender, RoutedEventArgs e)

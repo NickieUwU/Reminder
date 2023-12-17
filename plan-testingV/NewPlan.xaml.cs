@@ -30,6 +30,7 @@ namespace plan_testingV
         private void GoBack(object sender, RoutedEventArgs e)
         {
             Home home = new Home();
+            home.menuUser.Header = UserTempData.Username;
             home.Show();
             this.Close();
         }
@@ -68,8 +69,7 @@ namespace plan_testingV
                         SQL_con.Open();
                     }
                     Login login = new Login();
-                    int User_ID = getUserID();
-                    UserTempData userTempData = new UserTempData(login.txtUsername.Text);
+                    int User_ID = UserTempData.UserID;
                     string query = "INSERT INTO tblPlans (User_ID, Plan_name, Plan_desc, Plan_remindme) VALUES (@User_ID, @Plan_name, @Plan_desc, @Plan_remindme)";
                     SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
                     SQL_cmd.CommandType = CommandType.Text;
@@ -149,55 +149,6 @@ namespace plan_testingV
             {
                 comboMinute.Items.Add(i+1);
             }
-        }
-
-        
-        public int getUserID()
-        {
-            Login login = new Login();
-            int User_ID = 0;
-            string Username = GetText();
-            string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
-            SqlConnection SQL_con = new SqlConnection(DBcon_string);
-            try
-            {
-                if (SQL_con.State == System.Data.ConnectionState.Closed)
-                {
-                    SQL_con.Open();
-                }
-                string query_getUserID = "SELECT USER_ID FROM tbl_Users WHERE Username=@Username";
-                SqlCommand SQL_cmd_getUserID = new SqlCommand(query_getUserID, SQL_con);
-                SQL_cmd_getUserID.Parameters.AddWithValue("@Username", Username);
-
-                using (SqlDataReader sqlDataReader = SQL_cmd_getUserID.ExecuteReader())
-                {
-                    if (sqlDataReader.Read())
-                    {
-                        User_ID = sqlDataReader.GetInt32(0);
-                    }
-                }
-
-                //MessageBox.Show(User_ID.ToString()+" <= user id succesfully obtained\n"+Username+" <= username succesfully obtained");
-
-                // You can directly return the user_ID here
-                return User_ID;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return 0;
-            }
-            finally
-            {
-                SQL_con.Close();
-            }
-        }
-
-        private string GetText()
-        {
-            Login login = new Login();
-            //return login.txtUsername.Paste();
-            return "as";
         }
 
     }

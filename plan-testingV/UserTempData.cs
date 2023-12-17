@@ -6,19 +6,9 @@ using System.Threading.Tasks;
 
 namespace plan_testingV
 {
-    public class UserTempData
+    public static class UserTempData
     {
-        private string username;
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-
-
-        public UserTempData(string Username)
-        {
-            this.Username = Username;
-        }
+        public static int UserID { get; set; }
+        public static string Username { get; set; }
     }
 }
