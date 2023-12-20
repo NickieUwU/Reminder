@@ -155,12 +155,10 @@ namespace plan_testingV
 
         }
 
+        
         private void GoAhead(object sender, RoutedEventArgs e)
         {
-            if(GetPlansName() != null && GetPlansDate() != null)
-            {
-                count++;
-            }
+            count++;
             DisplayData();
         }
 
@@ -172,6 +170,36 @@ namespace plan_testingV
                 count = 0;
             }
             DisplayData();
+        }
+
+        private void DeletePlan(object sender, RoutedEventArgs e)
+        {
+            string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
+            SqlConnection SQL_con = new SqlConnection(DBcon_string);
+            try
+            {
+                if(SQL_con.State == System.Data.ConnectionState.Closed)
+                {
+                    SQL_con.Open();
+                }
+                string query = "DELETE FROM tblPlans WHERE User_ID=@User_ID AND Plan_name=@Plan_name AND Plan_desc=@Plan_desc AND Plan_remindme=@Plan_remindme";
+                SqlCommand SQL_command = new SqlCommand(query, SQL_con);
+                SQL_command.Parameters.AddWithValue("@User_ID", UserTempData.UserID);
+                SQL_command.Parameters.AddWithValue("@Plan_name", GetPlansName());
+                SQL_command.Parameters.AddWithValue("@Plan_desc", GetPlansDesc());
+                SQL_command.Parameters.AddWithValue("@Plan_remindme", GetPlansDate());
+                SQL_command.ExecuteScalar();
+                count--;
+                DisplayData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                SQL_con.Close();
+            }
         }
     }
 }

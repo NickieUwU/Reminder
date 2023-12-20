@@ -76,6 +76,14 @@
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Center"
                    />
+            <Button
+                   Content="Delete" 
+                   Grid.Column="1" 
+                   Grid.ColumnSpan="2" 
+                   Margin="50,18,50,10" 
+                   Grid.Row="3"
+                   Click="DeletePlan"
+                    />
         </Grid>
         <Button Content="&lt;-" 
         Margin="62,33,72,33"
