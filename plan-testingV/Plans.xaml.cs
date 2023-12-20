@@ -23,10 +23,10 @@ namespace plan_testingV
         public Plans()
         {
             InitializeComponent();
+            DisplayData();
         }
 
-        private int count;
-        Login login = new Login();
+        int count = 0;
         private void DisplayData()
         {
             lblPlanName.Content = GetPlansName();
@@ -39,11 +39,6 @@ namespace plan_testingV
             home.menuUser.Header = UserTempData.Username;
             home.Show();
             this.Close();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            DisplayData();
         }
 
         
@@ -59,18 +54,19 @@ namespace plan_testingV
                     SQL_con.Open();
                 }
                 int User_ID = UserTempData.UserID;
-                string Plan_name = "";
+                List<string> Plan_nameList = new List<string>();
                 string query = "SELECT Plan_name FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.HasRows && sqlDataReader.Read())
+                    while(sqlDataReader.Read())
                     {
-                        Plan_name = sqlDataReader.GetString(count);
+                        Plan_nameList.Add(sqlDataReader.GetString(0));
                     }
                 }
-                return Plan_name;
+                string[] Plan_nameArray = Plan_nameList.ToArray();
+                return Plan_nameArray[count];
             }
             catch (Exception ex)
             {
@@ -95,18 +91,20 @@ namespace plan_testingV
                     SQL_con.Open();
                 }
                 int User_ID = UserTempData.UserID;
-                string Plan_desc = "";
+                List<string> Plan_descList = new List<string>();
                 string query = "SELECT Plan_desc FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.HasRows && sqlDataReader.Read())
+                    while(sqlDataReader.Read())
                     {
-                        Plan_desc = sqlDataReader.GetString(count);
+                        Plan_descList.Add(sqlDataReader.GetString(0));
                     }
+                    string[] Plan_descArray = Plan_descList.ToArray();
+                    return Plan_descArray[count];
                 }
-                return Plan_desc;
+                
             }
             catch (Exception ex)
             {
@@ -131,18 +129,19 @@ namespace plan_testingV
                     SQL_con.Open();
                 }
                 int User_ID = UserTempData.UserID;
-                string Plan_remindme = "";
+                List<string> Plan_remindmeList = new List<string>();
                 string query = "SELECT Plan_remindme FROM tblPlans WHERE User_ID=@User_ID";
                 SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
                 SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
                 using (SqlDataReader sqlDataReader = SQL_cmd.ExecuteReader())
                 {
-                    if (sqlDataReader.HasRows && sqlDataReader.Read())
+                    while(sqlDataReader.Read())
                     {
-                        Plan_remindme = sqlDataReader.GetString(count);
+                        Plan_remindmeList.Add(sqlDataReader.GetString(0));
                     }
                 }
-                return Plan_remindme;
+                string[] Plan_remindmeArray = Plan_remindmeList.ToArray();
+                return Plan_remindmeArray[count];
             }
             catch (Exception ex)
             {
@@ -158,14 +157,20 @@ namespace plan_testingV
 
         private void GoAhead(object sender, RoutedEventArgs e)
         {
-            count++;
+            if(GetPlansName() != null && GetPlansDate() != null)
+            {
+                count++;
+            }
             DisplayData();
         }
 
         private void GoBackPlan(object sender, RoutedEventArgs e)
         {
             count--;
-            if (count < 0) count = 0;
+            if (count < 0)
+            {
+                count = 0;
+            }
             DisplayData();
         }
     }
