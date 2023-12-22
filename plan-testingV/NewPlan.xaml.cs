@@ -37,12 +37,14 @@ namespace plan_testingV
 
         private void create_NewPlan(object sender, RoutedEventArgs e)
         {
+            int currentYear = DateTime.Now.Year;
+            int lastYear = currentYear - 1;
             string plan_name = txtPlanName.Text;
             string plan_desc = txtPlanDesc.Text;
-            int year = (int)comboYear.SelectedIndex;
+            int year = (int)comboYear.SelectedIndex + lastYear;
             int month = (int)comboMonth.SelectedIndex;
             int day = (int)comboDay.SelectedIndex;
-            int hour = (int)comboHour.SelectedIndex;
+            int hour = (int)comboHour.SelectedIndex - 1;
             int minute = (int)comboMinute.SelectedIndex;
             
 
@@ -59,36 +61,43 @@ namespace plan_testingV
             {
                 DateTime _plan_date = new DateTime(year, month, day, hour, minute, 0);
                 string plan_date = _plan_date.ToString();
-                warning_label.Content = "";
-                string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
-                SqlConnection SQL_con = new SqlConnection(DBcon_string);
-                try
+                if(string.IsNullOrEmpty(plan_date))
                 {
-                    if(SQL_con.State == System.Data.ConnectionState.Closed)
+                    warning_label.Content = "please enter a valid date";
+                }
+                else
+                {
+                    warning_label.Content = "";
+                    string DBcon_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
+                    SqlConnection SQL_con = new SqlConnection(DBcon_string);
+                    try
                     {
-                        SQL_con.Open();
+                        if (SQL_con.State == System.Data.ConnectionState.Closed)
+                        {
+                            SQL_con.Open();
+                        }
+                        Login login = new Login();
+                        int User_ID = UserTempData.UserID;
+                        string query = "INSERT INTO tblPlans (User_ID, Plan_name, Plan_desc, Plan_remindme) VALUES (@User_ID, @Plan_name, @Plan_desc, @Plan_remindme)";
+                        SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
+                        SQL_cmd.CommandType = CommandType.Text;
+                        SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
+                        SQL_cmd.Parameters.AddWithValue("@Plan_name", plan_name);
+                        SQL_cmd.Parameters.AddWithValue("@Plan_desc", plan_desc);
+                        SQL_cmd.Parameters.AddWithValue("@Plan_remindme", plan_date);
+                        SQL_cmd.ExecuteNonQuery();
+                        Home home = new Home();
+                        home.Show();
+                        this.Close();
                     }
-                    Login login = new Login();
-                    int User_ID = UserTempData.UserID;
-                    string query = "INSERT INTO tblPlans (User_ID, Plan_name, Plan_desc, Plan_remindme) VALUES (@User_ID, @Plan_name, @Plan_desc, @Plan_remindme)";
-                    SqlCommand SQL_cmd = new SqlCommand(query, SQL_con);
-                    SQL_cmd.CommandType = CommandType.Text;
-                    SQL_cmd.Parameters.AddWithValue("@User_ID", User_ID);
-                    SQL_cmd.Parameters.AddWithValue("@Plan_name", plan_name);
-                    SQL_cmd.Parameters.AddWithValue("@Plan_desc", plan_desc);
-                    SQL_cmd.Parameters.AddWithValue("@Plan_remindme", plan_date);
-                    SQL_cmd.ExecuteNonQuery();
-                    Home home = new Home();
-                    home.Show();
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    SQL_con.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        SQL_con.Close();
+                    }
                 }
             }
         }
