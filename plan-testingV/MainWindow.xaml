@@ -17,11 +17,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="Planner test version"
+        <Label Content="Reminder"
                Grid.Row="0"
                Grid.Column="1"
                VerticalContentAlignment="Center"
-               HorizontalContentAlignment="Center"
+               HorizontalContentAlignment="Center" 
+               Foreground="White"
+               FontSize="25"
                />
         <Button Content="Sign in"
                 Name="btnSignin"

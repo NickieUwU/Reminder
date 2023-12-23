@@ -24,7 +24,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="&lt;-" 
-        Margin="62,33,72,33"
+        Margin="62,33,72,10"
         HorizontalContentAlignment="Center"
         VerticalContentAlignment="Center"
         Click="GoBack"
