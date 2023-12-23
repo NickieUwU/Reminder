@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:plan_testingV"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800" Background="#36393e" ResizeMode="NoResize">
+        Title="Home" Height="450" Width="800" Background="#36393e" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -27,9 +27,8 @@
             <MenuItem Header=""
                       Name="menuUser"
                       Foreground="White">
-                <MenuItem Header="Show profile"/>
-                <MenuItem Header="Settings"/>
-                <MenuItem Header="Log out" 
+                <MenuItem Header="Settings" Foreground="Black"/>
+                <MenuItem Header="Log out" Foreground="Red" 
                           Click="Logout"/>
             </MenuItem>
         </Menu>

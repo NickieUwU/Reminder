@@ -30,7 +30,6 @@ namespace plan_testingV
         private void GoBack(object sender, RoutedEventArgs e)
         {
             Home home = new Home();
-            home.menuUser.Header = UserTempData.Username;
             home.Show();
             this.Close();
         }

@@ -24,6 +24,11 @@ namespace plan_testingV
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            menuUser.Header = UserTempData.Username;
+        }
+
         private void Logout(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

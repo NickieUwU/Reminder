@@ -72,7 +72,6 @@ namespace plan_testingV
                         UserTempData.UserID = getUserID();
                         UserTempData.Username = Username;
                         Home home = new Home();
-                        home.menuUser.Header = Username;
                         NewPlan newPlan = new NewPlan();
                         home.Show();
                         this.Close();

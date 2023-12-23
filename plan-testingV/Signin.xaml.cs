@@ -63,7 +63,7 @@ namespace plan_testingV
                     SQL_command.Parameters.AddWithValue("@Username", Username);
                     SQL_command.Parameters.AddWithValue("@Password", Password);
                     SQL_command.ExecuteNonQuery();
-                    
+                    UserTempData.Username = Username;
                     Home home = new Home();
                     home.Show();
                     this.Close();
