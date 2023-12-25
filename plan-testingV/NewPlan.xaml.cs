@@ -15,6 +15,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ServiceProcess;
+using System.Timers;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace plan_testingV
 {
@@ -23,10 +26,12 @@ namespace plan_testingV
     /// </summary>
     public partial class NewPlan : Window
     {
+
         public NewPlan()
         {
             InitializeComponent();
         }
+        
         private void GoBack(object sender, RoutedEventArgs e)
         {
             Home home = new Home();
@@ -45,7 +50,6 @@ namespace plan_testingV
             int day = (int)comboDay.SelectedIndex;
             int hour = (int)comboHour.SelectedIndex - 1;
             int minute = (int)comboMinute.SelectedIndex;
-            
 
 
             if (string.IsNullOrEmpty(plan_name))
@@ -111,16 +115,17 @@ namespace plan_testingV
         }
 
         private void add_months(object sender, RoutedEventArgs e)
-        { 
-            for(int i=0; i < 12; i++)
+        {
+            for(int i=0; i < DateTime.Now.Month; i++)
             {
                 comboMonth.Items.Add(i+1);
             }
+
         }
 
         private void add_days(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 31; i++)
             {
                 string ending = "";
                 if(i== 0)
@@ -145,6 +150,7 @@ namespace plan_testingV
 
         private void add_hours(object sender, RoutedEventArgs e)
         {
+            
             for(int i=0; i < 24; i++)
             {
                 comboHour.Items.Add(i);
