@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.ServiceProcess;
 using System.Timers;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Notifications.Wpf;
 
 namespace plan_testingV
 {

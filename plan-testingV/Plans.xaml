@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:plan_testingV"
+        xmlns:notifications="clr-namespace:Notifications.Wpf;assembly=Notifications.Wpf"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Plans" Height="450" Width="800" Background="#36393e" ResizeMode="NoResize">

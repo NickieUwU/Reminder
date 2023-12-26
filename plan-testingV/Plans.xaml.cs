@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Notifications.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace plan_testingV
         {
             InitializeComponent();
             DisplayData();
+            SendNotification();
         }
 
         int count = 0;
@@ -200,5 +202,65 @@ namespace plan_testingV
                 SQL_con.Close();
             }
         }
+
+        private void SendNotification()
+        {
+            List<Plan> plans = GetAllPlans();
+            DateTime now = DateTime.Now;
+            NotificationManager notificationManager = new NotificationManager();
+            foreach(var plan in plans)
+            {
+                DateTime set_date = DateTime.Parse(plan.Plan_remindme);
+                if((set_date >= now))
+                {
+                    notificationManager.Show(new NotificationContent
+                    {
+                        Title = plan.Plan_name,
+                        Message = plan.Plan_desc,
+                        Type = NotificationType.Information
+                    });
+                }
+            }
+        }
+
+        private List<Plan> GetAllPlans()
+        {
+            const string connection_string = "Data Source=DESKTOP-LKC2C9H\\TEW_SQLEXPRESS;Initial Catalog=Reminder;Integrated Security=True";
+            List<Plan> plans = new List<Plan>();
+            SqlConnection SQL_con = new SqlConnection(connection_string);
+            try
+            {
+                if(SQL_con.State == System.Data.ConnectionState.Closed)
+                {
+                    SQL_con.Open();
+                }
+                string query = "SELECT Plan_name, Plan_desc, Plan_remindme FROM tblPlans WHERE User_ID=@User_ID";
+                SqlCommand SQL_command = new SqlCommand(query, SQL_con);
+                SQL_command.Parameters.AddWithValue("@User_ID", UserTempData.UserID);
+                using(SqlDataReader sqlDataReader = SQL_command.ExecuteReader())
+                {
+                    while(sqlDataReader.Read())
+                    {
+                        plans.Add(new Plan
+                        {
+                            Plan_name = sqlDataReader.GetString(0),
+                            Plan_desc = sqlDataReader.GetString(1),
+                            Plan_remindme = sqlDataReader.GetString(2),
+                        });
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return plans;
+        }
+    }
+    public class Plan
+    {
+        public string Plan_name { get; set; }
+        public string Plan_desc { get; set; }
+        public string Plan_remindme { get; set; }
     }
 }

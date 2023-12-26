@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Notifications.Wpf;
 
 namespace plan_testingV
 {
@@ -69,6 +71,8 @@ namespace plan_testingV
                     int count = Convert.ToInt32(SQL_command.ExecuteScalar());
                     if (count == 1)
                     {
+                        
+                        
                         UserTempData.UserID = getUserID();
                         UserTempData.Username = Username;
                         Home home = new Home();
