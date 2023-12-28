@@ -25,7 +25,6 @@ namespace plan_testingV
         {
             InitializeComponent();
             DisplayData();
-            SendNotification();
         }
 
         int count = 0;
@@ -211,7 +210,7 @@ namespace plan_testingV
             foreach(var plan in plans)
             {
                 DateTime set_date = DateTime.Parse(plan.Plan_remindme);
-                if((set_date >= now))
+                if((now >= set_date))
                 {
                     notificationManager.Show(new NotificationContent
                     {
