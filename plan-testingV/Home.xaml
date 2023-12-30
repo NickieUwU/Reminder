@@ -27,9 +27,14 @@
               Background="Transparent">
             <MenuItem Header=""
                       Name="menuUser"
+                      Style="{StaticResource ParentMenuItem}"
                       Foreground="White">
-                <MenuItem Header="Settings" Foreground="Black"/>
-                <MenuItem Header="Log out" Foreground="Red" 
+                <MenuItem Header="Settings" 
+                          Style="{StaticResource ChildMenuItem}" 
+                          Foreground="Black"/>
+                <MenuItem Header="Log out"  
+                          Style="{StaticResource LogoutMenuItem}"
+                          Foreground="Red" 
                           Click="Logout"/>
             </MenuItem>
         </Menu>
