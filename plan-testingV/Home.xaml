@@ -38,12 +38,14 @@
                 Margin="50,36,32,30"
                 Content="Create new plan"
                 Name="btnCreateNewPlan"
+                Style="{StaticResource RoundedButton}"
                 Click="CreateNewPlan"/>
         <Button Grid.Row="2"
                 Grid.Column="2"
                 Margin="50,36,32,30"
                 Content="View your plans"
                 Name="btnViewPlans"
+                Style="{StaticResource RoundedButton}"
                 Click="ViewPlans"/>
     </Grid>
 </Window>

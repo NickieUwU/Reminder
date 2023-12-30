@@ -96,6 +96,8 @@
                 Height="40"
                 Width="120"
                 Margin="65,25,0,0"
+                Style="{StaticResource RoundedButton}"
+                Background="Aqua"
                 Click="LoginUser"/>
     </Grid>
 </Window>

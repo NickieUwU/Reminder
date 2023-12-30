@@ -32,7 +32,9 @@
                 Grid.Row="1"
                 Height="30"
                 Width="50"
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Left"
+                Style="{StaticResource RoundedButton}"
+                Background="ForestGreen"
                 Click="open_signin"
                 />
         <Button Content="Log in"
@@ -41,7 +43,9 @@
                 Grid.Row="1"
                 Height="30"
                 Width="50"
-                HorizontalAlignment="Right" 
+                HorizontalAlignment="Right"
+                Style="{StaticResource RoundedButton}"
+                Background="Aqua"
                 Click="open_login"
                 />
     </Grid>
