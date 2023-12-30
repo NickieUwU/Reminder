@@ -3,7 +3,6 @@
 
     <Style x:Key="ParentMenuItem" TargetType="{x:Type MenuItem}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="DarkSlateGray"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="10,4"/>
         <Style.Triggers>
