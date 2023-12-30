@@ -36,7 +36,7 @@
                Grid.Column="1"
                FontSize="35"
                HorizontalContentAlignment="Left"
-               Margin="20,10,10,10"/>
+               Margin="148,10,348,10"/>
         <Label Content="Username" 
                Grid.Row="1"
                Grid.Column="0"
@@ -95,7 +95,7 @@
                 HorizontalAlignment="Left"
                 Height="40"
                 Width="120"
-                Margin="65,25,0,0"
+                Margin="148,25,0,0"
                 Style="{StaticResource RoundedButton}"
                 Background="Aqua"
                 Click="LoginUser"/>

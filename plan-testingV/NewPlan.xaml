@@ -37,7 +37,7 @@
        Grid.Column="1"
        FontSize="35"
        HorizontalContentAlignment="Left"
-       Margin="20,10,10,10"/>
+       Margin="90,9,290,11"/>
         <Label Content="Plan name"
                Grid.Row="1"
                Grid.Column="0"
