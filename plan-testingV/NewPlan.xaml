@@ -96,7 +96,9 @@
                 Content="Create new plan"
                 Grid.Column="1"
                 Grid.Row="4" 
-                Margin="75,50,360,0" 
+                Margin="75,50,360,0"
+                Background="Aqua"
+                Style="{StaticResource RoundedButton}"
                 Click="create_NewPlan"
                 />
         <ComboBox Name="comboYear"
